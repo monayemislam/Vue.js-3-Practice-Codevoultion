@@ -1,6 +1,7 @@
 <template>
 <div>{{greet}} {{ name }}</div>
-<div v-text="channel"></div>
+<div v-html="channel"></div>
+<div v-html="hack"></div>
 </template>
 
 <script>
@@ -11,7 +12,8 @@ export default {
     return {
       greet: "Hello",
       name: "Monayem",
-      channel: "Return One"
+      channel: "<b>Return One</b>",
+      hack: `<a href="#" onClick="alert('You have been hacked!')">Win a Prize</a>`
     }
   }
 }
