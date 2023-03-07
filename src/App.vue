@@ -7,12 +7,27 @@
 <h2 v-bind:class="isSoldout ? 'sold-out' : 'new' ">Sold Out</h2>
 <h2 v-bind:class="['new','promoted']">Newly Promoted</h2>
 <h2 v-bind:class="[isPromoted && 'promoted', isSoldout ? 'sold-out' : 'new']">Array Conditional movie</h2>
+
 <h2 v-bind:class="{
   promoted: isPromoted,
   new: !isSoldout,
   'sold-out': isSoldout
 }">Object Conditional Movie
 </h2>
+
+<h2 v-bind:style="{
+  color: highlightColor,
+  // 'font-size': headerSize + 'px',
+  fontSize: headerSize + 'px',
+  padding: 20,
+}">Inline Style</h2>
+
+<h2 v-bind:style="headerStyleObject">Inline Style</h2>
+
+<h2 v-bind:style="[baseStyleObject, successStyleObject]">Inline Style</h2>
+
+<h2 v-bind:style="[baseStyleObject, dangerStyleObject]">Inline Style</h2>
+
 </template>
 
 <script>
@@ -26,6 +41,27 @@ export default {
       status: 'danger',
       isPromoted: false,
       isSoldout: true,
+      headerSize: 50,
+      highlightColor: 'orange',
+      headerStyleObject:{
+        color: 'orange',
+        fontSize: '50px',
+        padding: '20px',
+      },
+      baseStyleObject: {
+        fontSize: '50px',
+        padding: '10px',
+      },
+      successStyleObject: {
+        color: 'green',
+        backgroundColor: 'lightgreen',
+        border: '1px solid green'
+      },
+      dangerStyleObject: {
+        color: 'darkred',
+        backgroundColor: 'red',
+        border: '1px solid darkred'
+      },
     }
   }
 }
