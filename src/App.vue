@@ -2,6 +2,8 @@
 <div>{{greet}} {{ name }}</div>
 <div v-html="channel"></div>
 <div v-html="hack"></div>
+<h2 v-bind:id="headingId">Heading</h2>
+<button v-bind:disabled="isDisabled">Bind</button>
 </template>
 
 <script>
@@ -13,7 +15,9 @@ export default {
       greet: "Hello",
       name: "Monayem",
       channel: "<b>Return One</b>",
-      hack: `<a href="#" onClick="alert('You have been hacked!')">Win a Prize</a>`
+      hack: `<a href="#" onClick="alert('You have been hacked!')">Win a Prize</a>`,
+      headingId: "heading",
+      isDisabled: true,
     }
   }
 }
