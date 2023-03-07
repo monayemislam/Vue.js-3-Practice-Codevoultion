@@ -1,9 +1,18 @@
 <template>
-<div>{{greet}} {{ name }}</div>
-<div v-html="channel"></div>
-<div v-html="hack"></div>
 <h2 v-bind:id="headingId">Heading</h2>
 <button v-bind:disabled="isDisabled">Bind</button>
+<h2 class="underline">underline Text</h2>
+<h2 class="underline" v-bind:class="status">Status</h2>
+<h2 v-bind:class="isPromoted && 'promoted'">Promoted Movied</h2>
+<h2 v-bind:class="isSoldout ? 'sold-out' : 'new' ">Sold Out</h2>
+<h2 v-bind:class="['new','promoted']">Newly Promoted</h2>
+<h2 v-bind:class="[isPromoted && 'promoted', isSoldout ? 'sold-out' : 'new']">Array Conditional movie</h2>
+<h2 v-bind:class="{
+  promoted: isPromoted,
+  new: !isSoldout,
+  'sold-out': isSoldout
+}">Object Conditional Movie
+</h2>
 </template>
 
 <script>
@@ -12,12 +21,11 @@ export default {
   name: 'App',
   data(){
     return {
-      greet: "Hello",
-      name: "Monayem",
-      channel: "<b>Return One</b>",
-      hack: `<a href="#" onClick="alert('You have been hacked!')">Win a Prize</a>`,
       headingId: "heading",
       isDisabled: true,
+      status: 'danger',
+      isPromoted: false,
+      isSoldout: true,
     }
   }
 }
@@ -31,5 +39,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.underline{
+  text-decoration: underline;
+}
+.promoted{
+  font-style: italic;
+}
+.new{
+  color: olivedrab;
+}
+.sold-out{
+  color: #f00;
 }
 </style>
