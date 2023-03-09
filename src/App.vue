@@ -9,6 +9,10 @@
     <h2>Return One</h2>
     <h2>Vue</h2>
   </div>
+
+  <h2 v-show="showElement">Using v-show</h2>
+  <h2 v-if="showElement">Using if</h2>
+  <!-- Generally speaking, v-if has higher toggle costs while v-show has higher initial render costs. So prefer v-show if you need to toggle something very often, and prefer v-if if the condition is unlikely to change at runtime. -->
 </template>
 
 <script>
@@ -18,6 +22,7 @@ export default {
     return {
       num: "Hi",
       display: true,
+      showElement: true,
     };
   },
 };
