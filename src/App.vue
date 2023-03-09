@@ -1,18 +1,22 @@
 <template>
-  <h2 v-if="num === 0">The number is zero</h2>
-  <h2 v-else-if="num < 0">The number is negative</h2>
-  <h2 v-else-if="num > 0">The number is positive</h2>
-  <h2 v-else>Not A Number</h2>
+  <h2 v-for="(name, index) in names" :key="name">{{ index }} {{ name }}</h2>
+  <h2 v-for="name in fullNames" :key="name.first">
+    {{ name.first }} {{ name.last }}
+  </h2>
 
-  <div v-if="display">
-    <h2>Monayem</h2>
-    <h2>Return One</h2>
-    <h2>Vue</h2>
+  <div v-for="writter in writters" :key="writter.name">
+    <h2>{{ writter.name }}</h2>
+    <h3 v-for="book in writter.books" :key="book">{{ book }}</h3>
   </div>
 
-  <h2 v-show="showElement">Using v-show</h2>
-  <h2 v-if="showElement">Using if</h2>
-  <!-- Generally speaking, v-if has higher toggle costs while v-show has higher initial render costs. So prefer v-show if you need to toggle something very often, and prefer v-if if the condition is unlikely to change at runtime. -->
+  <h2 v-for="(value, key, index) in myInfo" :key="value">
+    {{ index }} {{ key }} {{ value }}
+  </h2>
+
+  <template v-for="name in names" :key="name">
+    <h2>{{ name }}</h2>
+    <hr />
+  </template>
 </template>
 
 <script>
@@ -20,9 +24,27 @@ export default {
   name: "App",
   data() {
     return {
-      num: "Hi",
-      display: true,
-      showElement: true,
+      names: ["Monayem", "Nafi", "Nawsin"],
+      fullNames: [
+        { first: "Monayem", last: "Islam" },
+        { first: "Zobayer", last: "Nafi" },
+        { first: "Tasnuva", last: "Nawsin" },
+      ],
+      writters: [
+        {
+          name: "Ahmed Sofa",
+          books: ["Gavi Bittanto", "Bangali Musolmaner Mon"],
+        },
+        {
+          name: "Somoresh Mojumder",
+          books: ["Satkahon", "At kuthuri Noy doroja"],
+        },
+      ],
+      myInfo: {
+        name: "Monayem Islam Tamal",
+        channel: "Return One",
+        Course: "Vue 3",
+      },
     };
   },
 };
