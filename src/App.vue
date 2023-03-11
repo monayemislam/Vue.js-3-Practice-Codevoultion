@@ -1,7 +1,6 @@
 <template>
-  <template v-for="name in names" :key="name">
-    <h2 v-if="name=='Nafi'">{{ name }}</h2>
-  </template>
+   <h2>Add Number- {{add(4,5,6)}}</h2>
+   <h2>Multiply Number- {{multiply(5)}}</h2>
 </template>
 
 <script>
@@ -9,9 +8,17 @@ export default {
   name: "App",
   data() {
     return {
-      names: ["Monayem", "Nafi", "Nawsin"],
+     baseNumber: 5
     }
   },
+  methods: {
+    add(a,b,c){
+      return a+b+c;
+    },
+    multiply(num){
+      return this.baseNumber*num;
+    }
+  }
 }
 </script>
 
