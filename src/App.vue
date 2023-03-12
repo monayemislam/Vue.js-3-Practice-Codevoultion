@@ -5,6 +5,13 @@
     <button @:click="volume += 2">Increase</button>
     <button @:click="volume -= 2">Decrease</button>
   </div>
+  <br />
+  <input type="text" v-model="books" />
+  <input type="text" v-model="bookInfo.title" />
+  <input type="text" v-model="bookInfo.author" />
+  <div>
+    <button @:click="bookList.push('Ongkar')">Add Book</button>
+  </div>
 </template>
 
 <script>
@@ -13,6 +20,12 @@ export default {
   data() {
     return {
       volume: 0,
+      books: "The Vinchi Code",
+      bookInfo: {
+        title: "",
+        author: "",
+      },
+      bookList: ["Satkahon", "Durbeen"],
     };
   },
   watch: {
@@ -22,6 +35,26 @@ export default {
           "Listening to a high volume for a long time may damage your hearing."
         );
       }
+    },
+    books: {
+      handler(newValue) {
+        console.log(`Calling API with book name = ${newValue}`);
+      },
+      immediate: true,
+    },
+    bookInfo: {
+      handler(newValue) {
+        console.log(
+          `Calling API with book title= ${newValue.title} and book author = ${newValue.author}`
+        );
+      },
+      deep: true,
+    },
+    bookList: {
+      handler(newValue) {
+        console.log(`Updated Book List ${newValue}`);
+      },
+      deep: true,
     },
   },
 };
