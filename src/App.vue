@@ -2,7 +2,7 @@
   <div>
     <p>{{ JSON.stringify(formValues, null, 2) }}</p>
   </div>
-  <form>
+  <form @submit="submitForm">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" v-model="formValues.name" />
@@ -30,6 +30,67 @@
         <option value="Singapore">Singapore</option>
       </select>
     </div>
+    <div>
+      <input
+        type="checkbox"
+        id="remoteWork"
+        v-model="formValues.remoteWork"
+        true-value="yes"
+        false-value="no"
+      />
+      <label for="remoteWork">Open to remote Work?</label>
+    </div>
+    <div>
+      <label>Skill Set</label>
+      <input
+        type="checkbox"
+        value="html"
+        id="html"
+        v-model="formValues.skillSet"
+      />
+      <label for="html">HTML</label>
+      <input
+        type="checkbox"
+        value="CSS"
+        id="css"
+        v-model="formValues.skillSet"
+      />
+      <label for="css">CSS</label>
+      <input
+        type="checkbox"
+        value="JavaScript"
+        id="javascript"
+        v-model="formValues.skillSet"
+      />
+      <label for="javascript">JavaScript</label>
+    </div>
+    <div>
+      <label>Years of Experience</label>
+      <input
+        type="radio"
+        value="0-2"
+        id="0-2"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="0-2">0-2</label>
+      <input
+        type="radio"
+        value="3-5"
+        id="3-5"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="3-5">3-5</label>
+      <input
+        type="radio"
+        value="6-10"
+        id="6-10"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="6-10">6-10</label>
+    </div>
+    <div>
+      <button>Submit</button>
+    </div>
   </form>
 </template>
 
@@ -43,8 +104,17 @@ export default {
         profileSummary: "",
         country: "",
         jobLocation: [],
+        remoteWork: false,
+        skillSet: [],
+        yearsOfExperience: "",
       },
     };
+  },
+  methods: {
+    submitForm(event) {
+      event.preventDefault();
+      console.log("Form Values", this.formValues);
+    },
   },
 };
 </script>
@@ -54,7 +124,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
