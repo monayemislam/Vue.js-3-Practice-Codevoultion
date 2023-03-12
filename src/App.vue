@@ -1,6 +1,19 @@
 <template>
-   <h2>Add Number- {{add(4,5,6)}}</h2>
-   <h2>Multiply Number- {{multiply(5)}}</h2>
+  <h2>{{ name }}</h2>
+  <!-- <button v-on:click="name = 'Nafi'">Change Name</button> -->
+  <button v-on:mouseover="name = 'Nafi'">Change Name</button>
+  <!-- <h2>{{ count }}</h2>
+  <div>
+    <button v-on:click="count += 1">Increment</button>
+    <button v-on:click="count -= 1">Decrement</button>
+  </div> -->
+  <h2>{{ count }}</h2>
+  <div>
+    <button v-on:click="increment(5)">Increment 5</button>
+    <button v-on:click="increment(1)">Increment 1</button>
+    <button v-on:click="decrement(5)">Decrement 5</button>
+    <button v-on:click="decrement(1)">Decrement 1</button>
+  </div>
 </template>
 
 <script>
@@ -8,18 +21,19 @@ export default {
   name: "App",
   data() {
     return {
-     baseNumber: 5
-    }
+      name: "Monayem",
+      count: 0,
+    };
   },
   methods: {
-    add(a,b,c){
-      return a+b+c;
+    increment(num) {
+      this.count += num;
     },
-    multiply(num){
-      return this.baseNumber*num;
-    }
-  }
-}
+    decrement(num) {
+      this.count -= num;
+    },
+  },
+};
 </script>
 
 <style>
