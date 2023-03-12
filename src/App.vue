@@ -1,6 +1,10 @@
 <template>
-  <h2>Full Name - {{ firstName }} {{ lastName }}</h2>
-  <h2>Computed Full Name - {{ fullName }}</h2>
+  <h2>Volume Tracker (0-20)</h2>
+  <h2>Current Volume : {{ volume }}</h2>
+  <div>
+    <button @:click="volume += 2">Increase</button>
+    <button @:click="volume -= 2">Decrease</button>
+  </div>
 </template>
 
 <script>
@@ -8,13 +12,16 @@ export default {
   name: "App",
   data() {
     return {
-      firstName: "Monayem",
-      lastName: "Islam",
+      volume: 0,
     };
   },
-  computed: {
-    fullName() {
-      return `${this.firstName} ${this.lastName}`;
+  watch: {
+    volume(newValue, oldValue) {
+      if (newValue > oldValue && newValue === 16) {
+        alert(
+          "Listening to a high volume for a long time may damage your hearing."
+        );
+      }
     },
   },
 };
