@@ -1,13 +1,22 @@
 <template>
-<InputComponent v-model="name"/>
+<card></card>
+<card>
+  <h2>Hello</h2>
+</card>
+<card>
+  <h2>Monayem Islam</h2>
+</card>
+<card>
+  <img src="https://picsum.photos/200">
+</card>
 </template>
 
 <script>
-import InputComponent from './components/InputComponent.vue';
+import Card from './components/Card.vue';
 export default {
   name: "App",
   components: {
-    InputComponent
+    Card
   },
   data() {
     return {
