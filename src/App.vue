@@ -9,7 +9,21 @@
 <card>
   <img src="https://picsum.photos/200">
 </card>
+
+<card>
+  <template v-slot:card-header>
+    <h1>Header</h1>
+  </template>
+  <template v-slot:default>
+    <img src="https://picsum.photos/200">
+  </template>
+   <template v-slot:card-footer>
+    <button>View Details</button>
+  </template>
+</card>
+
 </template>
+
 
 <script>
 import Card from './components/Card.vue';
